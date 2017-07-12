@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="GB2312"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+    <bean id="redisUtil" class="com.athena.utils.RedisUtil" init-method="init">
+        <property name="ip" value="${athena.redis.ip}"/>
+        <property name="port" value="${athena.redis.port}"/>
+        <property name="max_connection" value="${athena.redis.max_connection}"/>
+        <property name="time_out" value="${athena.redis.time_out}"/>
+        <property name="max_idle" value="${athena.redis.max_idle}"/>
+        <property name="min_idle" value="${athena.redis.min_idle}"/>
+        <property name="max_wait_time" value="${athena.redis.max_wait_time}"/>
+        <property name="test_onBorrow" value="${athena.redis.test_onBorrow}"/>
+    </bean>
+</beans>

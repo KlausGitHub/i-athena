@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.athena.dao.LotteryActivityMapper">
+    <resultMap id="BaseResultMap" type="com.athena.entity.LotteryActivity">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="activity_name" property="activityName" jdbcType="VARCHAR"/>
+        <result column="effective_time" property="effectiveTime" jdbcType="TIMESTAMP"/>
+        <result column="expire_time" property="expireTime" jdbcType="TIMESTAMP"/>
+        <result column="activity_type" property="activityType" jdbcType="TINYINT"/>
+        <result column="cash_begin_time" property="cashBeginTime" jdbcType="TIMESTAMP"/>
+        <result column="cash_end_time" property="cashEndTime" jdbcType="TIMESTAMP"/>
+        <result column="org_id" property="orgId" jdbcType="BIGINT"/>
+        <result column="audit_flag" property="auditFlag" jdbcType="TINYINT"/>
+        <result column="status" property="status" jdbcType="TINYINT"/>
+        <result column="description" property="description" jdbcType="VARCHAR"/>
+        <result column="is_deleted" property="isDeleted" jdbcType="TINYINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="modify_time" property="modifyTime" jdbcType="TIMESTAMP"/>
+        <result column="creator" property="creator" jdbcType="VARCHAR"/>
+        <result column="modifier" property="modifier" jdbcType="VARCHAR"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+    id, activity_name, effective_time, expire_time, activity_type, cash_begin_time, cash_end_time, 
+    org_id, audit_flag, status, description, is_deleted, create_time, modify_time, creator, 
+    modifier
+  </sql>
+    <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long">
+        select
+        <include refid="Base_Column_List"/>
+        from lottery_activity
+        where id = #{id,jdbcType=BIGINT}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from lottery_activity
+    where id = #{id,jdbcType=BIGINT}
+  </delete>
+    <insert id="insert" parameterType="com.athena.entity.LotteryActivity">
+    insert into lottery_activity (id, activity_name, effective_time, 
+      expire_time, activity_type, cash_begin_time, 
+      cash_end_time, org_id, audit_flag, 
+      status, description, is_deleted, 
+      create_time, modify_time, creator, 
+      modifier)
+    values (#{id,jdbcType=BIGINT}, #{activityName,jdbcType=VARCHAR}, #{effectiveTime,jdbcType=TIMESTAMP}, 
+      #{expireTime,jdbcType=TIMESTAMP}, #{activityType,jdbcType=TINYINT}, #{cashBeginTime,jdbcType=TIMESTAMP}, 
+      #{cashEndTime,jdbcType=TIMESTAMP}, #{orgId,jdbcType=BIGINT}, #{auditFlag,jdbcType=TINYINT}, 
+      #{status,jdbcType=TINYINT}, #{description,jdbcType=VARCHAR}, #{isDeleted,jdbcType=TINYINT}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{modifyTime,jdbcType=TIMESTAMP}, #{creator,jdbcType=VARCHAR}, 
+      #{modifier,jdbcType=VARCHAR})
+  </insert>
+    <insert id="insertSelective" parameterType="com.athena.entity.LotteryActivity">
+        insert into lottery_activity
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="activityName != null">
+                activity_name,
+            </if>
+            <if test="effectiveTime != null">
+                effective_time,
+            </if>
+            <if test="expireTime != null">
+                expire_time,
+            </if>
+            <if test="activityType != null">
+                activity_type,
+            </if>
+            <if test="cashBeginTime != null">
+                cash_begin_time,
+            </if>
+            <if test="cashEndTime != null">
+                cash_end_time,
+            </if>
+            <if test="orgId != null">
+                org_id,
+            </if>
+            <if test="auditFlag != null">
+                audit_flag,
+            </if>
+            <if test="status != null">
+                status,
+            </if>
+            <if test="description != null">
+                description,
+            </if>
+            <if test="isDeleted != null">
+                is_deleted,
+            </if>
+            <if test="createTime != null">
+                create_time,
+            </if>
+            <if test="modifyTime != null">
+                modify_time,
+            </if>
+            <if test="creator != null">
+                creator,
+            </if>
+            <if test="modifier != null">
+                modifier,
+            </if>
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="activityName != null">
+                #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveTime != null">
+                #{effectiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireTime != null">
+                #{expireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityType != null">
+                #{activityType,jdbcType=TINYINT},
+            </if>
+            <if test="cashBeginTime != null">
+                #{cashBeginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cashEndTime != null">
+                #{cashEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orgId != null">
+                #{orgId,jdbcType=BIGINT},
+            </if>
+            <if test="auditFlag != null">
+                #{auditFlag,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+                #{status,jdbcType=TINYINT},
+            </if>
+            <if test="description != null">
+                #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="isDeleted != null">
+                #{isDeleted,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                #{modifier,jdbcType=VARCHAR},
+            </if>
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.athena.entity.LotteryActivity">
+        update lottery_activity
+        <set>
+            <if test="activityName != null">
+                activity_name = #{activityName,jdbcType=VARCHAR},
+            </if>
+            <if test="effectiveTime != null">
+                effective_time = #{effectiveTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="expireTime != null">
+                expire_time = #{expireTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="activityType != null">
+                activity_type = #{activityType,jdbcType=TINYINT},
+            </if>
+            <if test="cashBeginTime != null">
+                cash_begin_time = #{cashBeginTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="cashEndTime != null">
+                cash_end_time = #{cashEndTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="orgId != null">
+                org_id = #{orgId,jdbcType=BIGINT},
+            </if>
+            <if test="auditFlag != null">
+                audit_flag = #{auditFlag,jdbcType=TINYINT},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=TINYINT},
+            </if>
+            <if test="description != null">
+                description = #{description,jdbcType=VARCHAR},
+            </if>
+            <if test="isDeleted != null">
+                is_deleted = #{isDeleted,jdbcType=TINYINT},
+            </if>
+            <if test="createTime != null">
+                create_time = #{createTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="modifyTime != null">
+                modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+            </if>
+            <if test="creator != null">
+                creator = #{creator,jdbcType=VARCHAR},
+            </if>
+            <if test="modifier != null">
+                modifier = #{modifier,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=BIGINT}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="com.athena.entity.LotteryActivity">
+    update lottery_activity
+    set activity_name = #{activityName,jdbcType=VARCHAR},
+      effective_time = #{effectiveTime,jdbcType=TIMESTAMP},
+      expire_time = #{expireTime,jdbcType=TIMESTAMP},
+      activity_type = #{activityType,jdbcType=TINYINT},
+      cash_begin_time = #{cashBeginTime,jdbcType=TIMESTAMP},
+      cash_end_time = #{cashEndTime,jdbcType=TIMESTAMP},
+      org_id = #{orgId,jdbcType=BIGINT},
+      audit_flag = #{auditFlag,jdbcType=TINYINT},
+      status = #{status,jdbcType=TINYINT},
+      description = #{description,jdbcType=VARCHAR},
+      is_deleted = #{isDeleted,jdbcType=TINYINT},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      modify_time = #{modifyTime,jdbcType=TIMESTAMP},
+      creator = #{creator,jdbcType=VARCHAR},
+      modifier = #{modifier,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=BIGINT}
+  </update>
+</mapper>
